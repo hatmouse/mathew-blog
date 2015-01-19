@@ -22,6 +22,6 @@ class Application(tornado.web.Application):
 
 if __name__ == '__main__':
     application = Application()
-    print('Listening 8001...')
-    application.listen(8001)
+    print('Listening 8080...')
+    application.listen(8080)
     tornado.ioloop.IOLoop.instance().start()
