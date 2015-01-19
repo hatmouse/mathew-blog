@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mathew's BG</title>
+    <script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.movebg.js"></script>
+    <link href="static/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="static/css/nav.css" rel="stylesheet" type="text/css">  
+    <link href="static/css/index.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="banner">
+<div class="wraper">
+    <div class="mynav">
+        <ul>
+            <li class="mynav-item cur"><a href="http://www.hatmouse.com">Home</a></li>
+            <li class="mynav-item"><a href="#">个人中心</a>
+	    <div class="mynav-box hidden-box">
+		<ul>
+		    <li><a href="http://www.hatmouse.com">我的成绩</a></li>
+		    <li><a href="http://www.hatmouse.com">消息动态</a></li>
+		    <li><a href="http://www.hatmouse.com">提交反馈</a></li>
+		    <li><a href="http://www.hatmouse.com">选修话题</a></li>
+		</ul>
+	    </div>
+	    </li>
+	    <li class="mynav-item"><a href="#">功能模块</a>
+	    <div class="mynav-box hidden-box">
+		<ul>
+		    <li><a href="http://www.hatmouse.com">自习室</a></li>
+		    <li><a href="http://www.hatmouse.com">挂科率</a></li>
+		    <li><a href="http://www.hatmouse.com">最近新闻</a></li> 
+		</ul>
+	    </div>
+	    </li>
+            <li class="mynav-item"><a href="#">帮助关于</a>
+	    <div class="mynav-box hidden-box">
+		<ul>
+		    <li><a href="http://www.hatmouse.com">使用帮助</a></li>
+		    <li><a href="http://www.hatmouse.com">联系我们</a></li>
+		</ul>
+	    </div>
+            </li>
+        </ul>
+        <!--移动的滑动-->
+        <div class="move-bg"></div>
+        <!--移动的滑动 end-->
+    </div>
+</div>
+<div style="padding:30px;">
+    <div class="container">
+        <!-- 首页签名 -->
+        <h5 class="text-center">我们一直在路上奔跑，却不曾停下来思考。 <span class="badge">mathew</span></h5>
+
+        <div class="text-center">
+            <small><code>hello world</code></small>
+        </div>
+    </div>
+</div>
+
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+    <li><a href="#setting" data-toggle="tab">个人设置</a></li>
+</ul>
+
+</div>
+
+
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="home">
+        <!-- 文章摘要 -->
+        <div id="page">
+            <!-- index侧边栏 -->
+            <div class="sidebar">
+                <header class="site-header">
+                    <h2>Mathew</h2>
+                </header>
+            </div>
+            <div class="site-content">
+                <div class="content-area">
+                    <!-- 文章列表 -->
+                    <!-- 禁止转义 -->
+                    {% autoescape None %}
+                    {% for article in articles %}
+                    <article class="essay">
+                        <header class="article-header">
+                            <h2>{{ article[0] }}</h2>
+                        </header>
+                        <div class="article-content">
+                            {{ article[1] }}
+                        </div>
+                        <footer class="article-footer">
+                            <span class="p-time">
+                                {{ article[2] }}
+                                </span>
+                            <span class="p-author">
+                                Mathew
+                                </span>
+                        </footer>
+                    </article>
+                    {% end %}
+                </div>
+            </div>
+        </div>    
+    </div>
+    <div class="tab-pane fade in" id="setting">
+        <div class="container">
+            <div class="page-header">
+                <h2>个人设置
+                    <small>Beta</small>
+                </h2>
+            </div>
+                <div class="form-group">
+                    <span>是否启动直接跳转无需登录</span>
+                    <input id="directjump" type="checkbox" name="my-checkbox" data-size="small" >
+                </div>
+                <button type="submit" class="btn btn-default">保存</button>
+        </div>
+    </div>
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    注意
+                </h4>
+            </div>
+            <div class="modal-body" id="myModalBody">
+                保存成功
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+<script>
+/*顶部导航兰*/
+$(".mynav").movebg({width:25,extra:6,speed:400,rebound_speed:500});
+</script>
+<script>
+    /*侧边栏的固定 js代码*/
+    var bannerheight=$(".banner").height();
+$(window).scroll(function () {
+       if ($(window).scrollTop() >bannerheight) {
+            $(".sidebar").attr("style", "position:fixed;top:0px");
+       }
+       else
+       {
+        $(".sidebar").attr("style", "position:absolute");
+       }
+   });
+</script>
+<script>
+    $(document).ready(function () {
+        $("button[type=submit]").click(function () {
+            if ($("#directjump").is(":checked"))
+                jumpvalue = "yes";
+            else
+                jumpvalue = "no";
+            $.post("/mycenter", {
+                jump: jumpvalue
+            }, function (data) {
+                data = eval(data);
+                if (data.return == "success") {
+                    $("#myModal").modal('show');
+                }
+            }, "json");
+        });
+    });
+    
+</script>
+</body>
+</html>

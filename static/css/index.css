@@ -1,0 +1,73 @@
+.clear:after{content:'';display:block; clear:both;}  
+.clear{zoom:1;overflow:hidden;}
+.banner{
+    }
+#page{
+    margin: 0 auto;
+    min-width:700px;
+}
+    
+.sidebar {
+        position: absolute;
+        min-width: 200px;
+        width: 250px;
+        height: 100%;
+        color: #fff;
+        background:#999999;
+        
+} 
+.site-header {
+        background-color: transparent;
+        border-bottom: 0;
+        margin: 20% 0;
+        padding: 0 20%;
+}
+.site-content {
+        display: block;
+        margin-left: 250px;
+        background: #CCCCCC;
+}
+.content-area {
+    padding: 3.3333% 0;
+    
+}
+.essay,
+.article-header,
+.article-content {
+        margin: 0 8.3333%;
+}
+.essay{
+    padding-top: 8.3333%;
+    margin-top: 5.3333%;
+    background: #fff;
+}
+.article-header {
+    padding: 0 10%;
+}
+.article-content{
+        padding: 0 10% 10%;
+}
+.article-footer {
+        padding: 5% 10%;
+        background: #E4F2F1;
+}
+
+.p-time,
+.p-author
+{
+    margin-right: 1em;
+}
+.body-content{
+    /* post文章*/
+    width: 80%;
+    padding:10px;
+    /*居中*/
+
+    /*如何做到两个div在同一行，并且当缩小width时不换行，就要保证最外层的width是一个固定值*/
+    min-width:900px;
+}
+.body_artical{
+    /* post文章*/
+    width: 90%;
+    padding-bottom:20px;
+}

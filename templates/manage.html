@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mathew's BG</title>
+    <script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen">        
+    <link href="static/css/manage.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div style="padding:30px;">
+    <div class="container">
+        <!-- 首页签名 -->
+        <h5 class="text-center">我们一直在路上奔跑，却不曾停下来思考。 <span class="badge">mathew</span></h5>
+        <div class="text-center">
+            <small><code>hello world</code></small>
+        </div>
+    </div>
+</div>
+<div class="body_header">
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+    <li><a href="#setting" data-toggle="tab">个人设置</a></li>
+</ul>
+</div>
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="home">
+        <div class="clearfix body_content">
+            <div id="postarticle">
+                <!-- 文章提交表单 -->
+                <form role="form" ">
+                    <div class="form-group">
+                      <h4><strong>TItle:</strong></h4>
+                      <input type="text" class="article_title form-control" placeholder="文章标题">
+                    </div>
+                    <div class="form-group">
+                        <h4><strong>Artical:</strong><small>using markdown</small></h4>
+                        <textarea class="article_content form-control" rows="7"></textarea>
+                    </div>
+                </form>
+                <button type="button" class="postarticle btn btn-default">发布</button>
+            </div>
+            <!-- 文章旁边的设置 -->
+            <div id="postsetting">
+                <div class="panel panel-default">
+
+                   <div class="panel-body">
+                    <div class="form-group">
+                        <h4><strong>TItle:</strong></h4>
+                        <div class="checkbox">
+                            <label>
+                            <input type="checkbox"> 请打勾
+                            </label>
+                        </div>
+                    </div>
+                   </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+    <div class="tab-pane fade in" id="setting">
+        <div class="container">
+            <div class="page-header">
+                <h2>个人设置
+                    <small>Beta</small>
+                </h2>
+            </div>
+                <div class="form-group">
+                    <span>是否启动直接跳转无需登录</span>
+                    <input id="directjump" type="checkbox" name="my-checkbox" data-size="small" >
+                </div>
+                <button type="submit" class="btn btn-default">保存</button>
+        </div>
+    </div>
+</div>
+      
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    注意
+                </h4>
+            </div>
+            <div class="modal-body" id="myModalBody">
+                保存成功
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+
+<script>
+    var article_title='';
+    var article_content
+    /*发布新文章*/
+    $("button.postarticle").click(function () {
+        article_title=$("input.article_title").val()
+        article_content=$("textarea.article_content").val()
+        $.post("/postarticle", {
+                    article_title: article_title,
+                    article_content: article_content
+                }, function (data) {
+                    data = eval(data);
+                    if (data.resultcode == "success") {
+                        $("#myModal").modal('show');
+                    }
+                }, "json");
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>山大服务助手</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0;">
+    <!-- Bootstrap -->
+    <!--<link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">-->
+    <!--<script type="text/javascript" src="static/bootstrap/js/jquery.min.js"></script>-->
+    <!--<script src="static/bootstrap/js/bootstrap.js"></script>-->
+    <script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.movebg.js"></script>
+    <link href="static/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen">        
+    <link href="static/css/index.css" rel="stylesheet" type="text/css">
+    {% block headerscript %}
+    {% end %}
+</head>
+<body>
+<div class="wraper">
+    <div class="mynav">
+        <ul>
+            <li class="mynav-item cur"><a href="http://www.hatmouse.com">Home</a></li>
+            <li class="mynav-item"><a href="#">个人中心</a>
+	    <div class="mynav-box hidden-box">
+		<ul>
+		    <li><a href="http://www.hatmouse.com">我的成绩</a></li>
+		    <li><a href="http://www.hatmouse.com">消息动态</a></li>
+		    <li><a href="http://www.hatmouse.com">提交反馈</a></li>
+		    <li><a href="http://www.hatmouse.com">选修话题</a></li>
+		</ul>
+	    </div>
+	    </li>
+	    <li class="mynav-item"><a href="#">功能模块</a>
+	    <div class="mynav-box hidden-box">
+		<ul>
+		    <li><a href="http://www.hatmouse.com">自习室</a></li>
+		    <li><a href="http://www.hatmouse.com">挂科率</a></li>
+		    <li><a href="http://www.hatmouse.com">最近新闻</a></li> 
+		</ul>
+	    </div>
+	    </li>
+            <li class="mynav-item"><a href="#">帮助关于</a>
+	    <div class="mynav-box hidden-box">
+		<ul>
+		    <li><a href="http://www.hatmouse.com">使用帮助</a></li>
+		    <li><a href="http://www.hatmouse.com">联系我们</a></li>
+		</ul>
+	    </div>
+            </li>
+        </ul>
+        <!--移动的滑动-->
+        <div class="move-bg"></div>
+        <!--移动的滑动 end-->
+    </div>
+</div>
+{% block contentbody %}
+{% end %}
+<script>
+$(".mynav").movebg({width:25,extra:6,speed:400,rebound_speed:500});
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+.clearfix{
+    overflow:auto;
+    _height:1%
+}
+.body_header{
+    padding:10px;
+}
+.body_content{
+    /* post文章*/
+    width: 90%;
+    padding:10px;
+    /*居中*/
+    margin: 0 auto;
+    /*如何做到两个div在同一行，并且当缩小width时不换行，就要保证最外层的width是一个固定值*/
+    min-width:750px;
+}
+.body_content #postarticle{
+    /* post文章*/
+    width: 70%;
+    float:left;
+    padding-top:20px;
+}
+.body_content #postsetting{
+    /* post文章*/
+    width: 25%;
+    float:right;
+    padding-top:30px;
+    /**min-width:250px;**/
+}
